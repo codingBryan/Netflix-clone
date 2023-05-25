@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NetflixClone.Views.MainPage"
+             xmlns:vm="clr-namespace:NetflixClone.ViewModels"
+             xmlns:controls="clr-namespace:NetflixClone.Controls"
+             x:DataType="vm:HomeViewModel"
+             BackgroundColor="Black"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="navStyle">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontFamily" Value="poppinsSemiold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Margin="0" Padding="0">
+        <ScrollView>
+            <VerticalStackLayout>
+                <Grid  HeightRequest="500">
+                    <Image Aspect="Center" HeightRequest="350" VerticalOptions="Start" Opacity="0.8">
+                        <Image.Source>
+                            <UriImageSource Uri="{Binding TrendingMovie.Thumbnail}"/>
+                        </Image.Source>
+                    </Image>
+                    <Grid HeightRequest="35" VerticalOptions="Start" Margin="0,35,0,0">
+                        <FlexLayout JustifyContent="SpaceAround" VerticalOptions="Center">
+                            <Label Text="Movies" Style="{StaticResource navStyle}"/>
+                            <Label Text="Series" Style="{StaticResource navStyle}"/>
+                            <Label Text="Categories" Style="{StaticResource navStyle}"/>
+                        </FlexLayout>
+                    </Grid>
+
+                    <HorizontalStackLayout VerticalOptions="End" HorizontalOptions="Center" Spacing="50">
+                        <VerticalStackLayout>
+                            <Label Text="+" HorizontalTextAlignment="Center" FontAttributes="Bold" Style="{StaticResource navStyle}"/>
+                            <Label Text="My List" HorizontalTextAlignment="Center" Style="{StaticResource navStyle}"/>
+                        </VerticalStackLayout>
+
+
+                        <Border StrokeShape="RoundRectangle 5" BackgroundColor="White" Padding="20, 5">
+                            <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                                <Image Source="play" Aspect="AspectFit" HeightRequest="16" WidthRequest="16"/>
+                                <Label Text="Play" TextColor="Black" FontAttributes="Bold" FontSize="16" Style="{StaticResource navStyle}"/>
+                            </HorizontalStackLayout>
+                        </Border>
+
+
+                        <VerticalStackLayout >
+                            <Grid HorizontalOptions="Center">
+                                <Ellipse Stroke="White" HeightRequest="22" WidthRequest="22" StrokeThickness="2"/>
+                                <Label Text="i" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource navStyle}"/>
+                            </Grid>
+                            <Label Text="Info" HorizontalOptions="Center" Margin="0, 5, 0, 0" Style="{StaticResource navStyle}"/>
+
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <controls:MovieRow Heading="Top Rated" Movies="{Binding topRated}" IsLarge="False"/>
+                <controls:MovieRow Heading="Originals" Movies="{Binding netflixOriginals}" IsLarge="True"/>
+                <controls:MovieRow Heading="Trending" Movies="{Binding trending}" IsLarge="False"/>
+                <controls:MovieRow Heading="Action" Movies="{Binding actionMovies}" IsLarge="False"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <Grid HeightRequest="35" VerticalOptions="Start" Margin="5,5,0,0">
+            <FlexLayout JustifyContent="SpaceBetween">
+
+                <Image Source="netflix_logo" Aspect="AspectFill" VerticalOptions="Start" HeightRequest="30" WidthRequest="30"/>
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="15" Margin="5, 0">
+                    <ImageButton Source="search" Aspect="AspectFill" HeightRequest="20" WidthRequest="20"/>
+                    <ImageButton Source="profile" Aspect="AspectFill" HeightRequest="25" WidthRequest="25"/>
+                </HorizontalStackLayout>
+            </FlexLayout>
+        </Grid>
+
+        <controls:MovieInfoBox Media="{Binding TrendingMovie}" VerticalOptions="End" IsVisible="{Binding ShowMovieInfoBox}" Closed="MovieInfoBox_Closed"/>
+    </Grid>
+
+</ContentPage>
