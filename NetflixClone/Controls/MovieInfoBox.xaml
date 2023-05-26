@@ -39,7 +39,7 @@
                 </Border>
                 <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,Auto">
                     <Label Text="{Binding Media.DisplayTitle}" FontSize="17" TextColor="White" LineBreakMode="CharacterWrap"/>
-                    <Button Text="X" Grid.Column="1" WidthRequest="25" HeightRequest="25" CornerRadius="12" Padding="0" BackgroundColor="#525252" VerticalOptions="Start" Clicked="Button_Clicked" Command="{Binding ClosedCommand}"/>
+                    <Button Text="X" Grid.Column="1" WidthRequest="25" HeightRequest="25" CornerRadius="12" Padding="0" BackgroundColor="#525252" VerticalOptions="Start" Clicked="Button_Clicked"/>
                 </Grid>
                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Media.ReleaseDate}" FontSize="10" TextColor="#9d9d9d"/>
                 <Label Grid.Row="2" Grid.Column="1" Text="{Binding Media.Overview}" FontSize="11" MaxLines="4" TextColor="White"/>

@@ -5,7 +5,7 @@ namespace NetflixClone.Controls;
 
 public partial class MovieRow : ContentView
 {
-    public event EventHandler<MediaSelectEventArgs> MediaSelected;
+    
     public MovieRow()
     {
         InitializeComponent();
@@ -33,20 +33,18 @@ public partial class MovieRow : ContentView
 
     public bool IsNotLarge => !IsLarge;
 
+    public event EventHandler<MediaSelectEventArgs> onMediaSelected;
     public ICommand MediaDetailsCommand { get; private set; }
-
-
     private void ExecuteMediaDetailsCommand(object parameter)
     {
         if (parameter is Media media && media is not null)
         {
-            MediaSelected?.Invoke(this, new MediaSelectEventArgs(media));
+            onMediaSelected?.Invoke(this, new MediaSelectEventArgs(media));
         }
     }
 }
 public class MediaSelectEventArgs : EventArgs
 {
     public Media Media { get; set; }
-
     public MediaSelectEventArgs(Media media) => Media = media;
 }

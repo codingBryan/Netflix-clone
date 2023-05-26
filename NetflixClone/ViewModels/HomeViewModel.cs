@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using NetflixClone.Models;
 using NetflixClone.Services;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace NetflixClone.ViewModels
 {
@@ -15,8 +16,7 @@ namespace NetflixClone.ViewModels
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(ShowMovieInfoBox))]
-        private Media? _selectedMedia;
-
+        private Media? selectedMedia;
         public bool ShowMovieInfoBox => SelectedMedia is not null;
         public HomeViewModel(TmdbService service)
         {
@@ -73,10 +73,12 @@ namespace NetflixClone.ViewModels
             {
                 if (media.Id == SelectedMedia?.Id)
                 {
+                    Debug.WriteLine("Closing Details page");
                     media = null;
                 }
+                SelectedMedia = media;
             }
-            SelectedMedia = media;
+            
         }
     }
 }

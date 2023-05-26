@@ -1,4 +1,6 @@
-﻿namespace NetflixClone;
+﻿using NetflixClone.Views;
+
+namespace NetflixClone;
 
 public partial class AppShell : Shell
 {

@@ -25,6 +25,9 @@
                         <Image.Source>
                             <UriImageSource Uri="{Binding TrendingMovie.Thumbnail}"/>
                         </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectMediaCommand}" CommandParameter="{Binding TrendingMovie}"/>
+                        </Image.GestureRecognizers>
                     </Image>
                     <Grid HeightRequest="35" VerticalOptions="Start" Margin="0,35,0,0">
                         <FlexLayout JustifyContent="SpaceAround" VerticalOptions="Center">
@@ -60,10 +63,10 @@
                     </HorizontalStackLayout>
                 </Grid>
 
-                <controls:MovieRow Heading="Top Rated" Movies="{Binding topRated}" IsLarge="False"/>
-                <controls:MovieRow Heading="Originals" Movies="{Binding netflixOriginals}" IsLarge="True"/>
-                <controls:MovieRow Heading="Trending" Movies="{Binding trending}" IsLarge="False"/>
-                <controls:MovieRow Heading="Action" Movies="{Binding actionMovies}" IsLarge="False"/>
+                <controls:MovieRow Heading="Top Rated" Movies="{Binding topRated}" IsLarge="False" onMediaSelected="MovieRow_MediaSelected"/>
+                <controls:MovieRow Heading="Originals" Movies="{Binding netflixOriginals}" IsLarge="True" onMediaSelected="MovieRow_MediaSelected"/>
+                <controls:MovieRow Heading="Trending" Movies="{Binding trending}" IsLarge="False" onMediaSelected="MovieRow_MediaSelected"/>
+                <controls:MovieRow Heading="Action" Movies="{Binding actionMovies}" IsLarge="False" onMediaSelected="MovieRow_MediaSelected" />
 
             </VerticalStackLayout>
         </ScrollView>
@@ -79,7 +82,7 @@
             </FlexLayout>
         </Grid>
 
-        <controls:MovieInfoBox Media="{Binding TrendingMovie}" VerticalOptions="End" IsVisible="{Binding ShowMovieInfoBox}" Closed="MovieInfoBox_Closed"/>
+        <controls:MovieInfoBox Media="{Binding SelectedMedia}" VerticalOptions="End" IsVisible="{Binding ShowMovieInfoBox}" Closed="MovieInfoBox_Closed"/>
     </Grid>
 
 </ContentPage>

@@ -13,6 +13,7 @@
 
     <TabBar>
         <ShellContent
+            Shell.TabBarIsVisible="False"
             Title="Home"
             Icon="home"
             ContentTemplate="{DataTemplate views:MainPage}"

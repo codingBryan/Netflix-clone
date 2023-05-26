@@ -12,7 +12,7 @@
             <inheritdoc cref="F:NetflixClone.ViewModels.HomeViewModel.trendingMovie"/>
         </member>
         <member name="P:NetflixClone.ViewModels.HomeViewModel.SelectedMedia">
-            <inheritdoc cref="F:NetflixClone.ViewModels.HomeViewModel._selectedMedia"/>
+            <inheritdoc cref="F:NetflixClone.ViewModels.HomeViewModel.selectedMedia"/>
         </member>
         <member name="F:NetflixClone.ViewModels.HomeViewModel.selectMediaCommand">
             <summary>The backing field for <see cref="P:NetflixClone.ViewModels.HomeViewModel.SelectMediaCommand"/>.</summary>

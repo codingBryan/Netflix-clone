@@ -11,7 +11,7 @@ public partial class MovieInfoBox : ContentView
     public MovieInfoBox()
 	{
 		InitializeComponent();
-        ClosedCommand = new Command(ExecuteClosedCommand);
+		ClosedCommand = new Command(ExecuteClosedCommand);
     }
 
 	public Media Media
@@ -21,7 +21,6 @@ public partial class MovieInfoBox : ContentView
 	}
 
     public ICommand ClosedCommand { get; private set; }
-    private void ExecuteClosedCommand() => Closed?.Invoke(this, EventArgs.Empty);
-
+	private void ExecuteClosedCommand() => Closed?.Invoke(this, EventArgs.Empty);		
     private void Button_Clicked(object sender, EventArgs e) => Closed?.Invoke(this, EventArgs.Empty);
 }
